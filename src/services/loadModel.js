@@ -1,7 +1,7 @@
-import tf from '@tensorflow/tfjs-node';
-
+const tf = require('@tensorflow/tfjs-node');
+const modelLink = 'https://storage.googleapis.com/bucket-ml-dicoding123/model/model.json'
+const envModelLink = `${process.env.MODEL_URL}`
 async function loadModel() {
-  return tf.loadGraphModel(process.env.MODEL_URL);
+    return tf.loadGraphModel(envModelLink ?? modelLink);
 }
-
-export {loadModel};
+module.exports = loadModel;
